@@ -1,0 +1,54 @@
+<!--
+  Generated template for the LoginPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Sign Up</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="ionContent">
+    <ion-img width="100%" height="150" src="../assets/imgs/Capture1.png"></ion-img>
+  <ion-list>
+    <form [formGroup]="myForm" (ngSubmit)="submitForm()">
+   
+    <ion-item class="ionContent">
+      <ion-label floating>Email</ion-label>
+      <ion-input formControlName="Email"   type="email" #Email ></ion-input>
+     
+    </ion-item>
+    <ion-label *ngIf="!myForm.controls.Email.valid  && (myForm.controls.Email.dirty || submitAttempt)">
+      <p style="color:red"> Please enter a valid Email Format.</p>
+  </ion-label>
+    <ion-item class="ionContent">
+      <ion-label floating>Password</ion-label>
+      <ion-input formControlName="password" type="password" #password></ion-input>
+    </ion-item>
+    <ion-label *ngIf="!myForm.controls.password.valid  && (myForm.controls.password.dirty || submitAttempt)">
+      <p style="color:red"> password must be at least 10 charcters </p>
+      <p style="color:red"> and max 30 character.</p>
+  </ion-label>
+    <ion-item class="ionContent">
+      <ion-label floating>Confirm Password</ion-label>
+      <ion-input formControlName="confirmPassword" type="password" #confirmPassword></ion-input>
+    </ion-item>
+    <ion-label *ngIf="!myForm.controls.confirmPassword.valid  && (myForm.controls.confirmPassword.dirty || submitAttempt)">
+      <p style="color:red"> Password and confirm password does not match.</p>
+  </ion-label> 
+ 
+
+   <p>
+    <button ion-button round outline type="submit" [disabled]="!myForm.valid" > SIGN UP <ion-icon name="ios-person-add-outline"></ion-icon></button>  </p>
+     <p>Already Have Account? </p> <button ion-button round outline [navPush]="Login" >LOG IN  <ion-icon name="md-log-in"></ion-icon></button>
+
+  </form>
+  </ion-list>
+
+</ion-content>
+<!--(click)="submitForm();"-->
