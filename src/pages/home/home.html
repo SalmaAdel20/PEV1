@@ -1,18 +1,24 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Home</ion-title>
-
+    <ion-title>Childes</ion-title>
   </ion-navbar>
+
 </ion-header>
 
-<ion-content padding >
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+<ion-content padding>
+  <ion-list>
+    <ion-item *ngFor="let child of items" >
+      <h2>{{child.Name}}</h2>
+      <h5>Age: {{child.Age}}, Addrss:{{child.Address}}</h5>
+      <h6>School: {{child.SName}}, SA: {{child.SAddress}}</h6>
+      <ion-buttons icon-only right>
+        <button ion-button icon-on  ly  (click)="GoToLocate()">
+          <ion-icon name="pin"></ion-icon>
+        </button>
+        <button ion-button icon-only color="danger" (click)="DeleteChild(child.key)">
+          <ion-icon name="trash"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-item>
+  </ion-list>
 </ion-content>

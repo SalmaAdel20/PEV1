@@ -1,0 +1,33 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>AddChild</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <ion-item >
+    <ion-label floating>Child Name</ion-label>
+    <ion-input type="text" [(ngModel)]="ChildName"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>Child Age</ion-label>
+    <ion-input type="number" [(ngModel)]="ChildAge"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>Address </ion-label>
+    <ion-input type="text" [(ngModel)]="Address"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>School Name</ion-label>
+    <ion-input type="text" [(ngModel)]="SchoolName"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>School Address</ion-label>
+    <ion-input type="text" [(ngModel)]="SchoolAddress"></ion-input>
+  </ion-item>
+  <br>
+  <button ion-button block (click)="AddChild(ChildName,ChildAge,Address,SchoolName,SchoolAddress)"> Add Children </button>
+
+</ion-content>

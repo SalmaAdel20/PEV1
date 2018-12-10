@@ -3,15 +3,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
-import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import {LoginPage} from '../pages/login/login';
 import {RegisterPage} from '../pages/register/register';
+import { AddChildPage} from "../pages/add-child/add-child";
+import { NotesPage} from "../pages/notes/notes";
+
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { AngularFireModule } from '@angular/fire';
+import { AngularFireModule } from "angularfire2";
+import { AngularFireDatabaseModule} from "angularfire2/database";
 import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
@@ -20,11 +22,12 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
-    ContactPage,
     HomePage,
     TabsPage,
-    LoginPage,RegisterPage
+    LoginPage,
+    RegisterPage,
+    AddChildPage,
+    NotesPage,
   ],
   imports: [
     BrowserModule,
@@ -32,18 +35,19 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
-    AngularFireStorageModule // imports firebase/storage only needed for storage features
-    //AngularFireAuth 
-    
-    
+    AngularFireStorageModule, // imports firebase/storage only needed for storage features
+    //AngularFireAuth
+    AngularFireDatabaseModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
-    ContactPage,
     HomePage,
-    TabsPage,LoginPage,RegisterPage
+    TabsPage,
+    LoginPage,
+    RegisterPage,
+    AddChildPage,
+    NotesPage,
   ],
   providers: [
     StatusBar,
