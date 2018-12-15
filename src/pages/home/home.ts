@@ -12,12 +12,12 @@ import {AddChildPage} from "../add-child/add-child";
 export class HomePage {
   currentUser: any;
   items = [];
-  ref = firebase.database().ref('Childes/');
+  ref = firebase.database();
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, private fdb: AngularFireDatabase) {
     this.currentUser = firebase.auth().currentUser;
     console.log(this.currentUser.uid);
-    this.ref.on('value', resp => {
+    this.ref.ref('Childes/'+this.currentUser.uid).on('value', resp => {
       this.items = snapshotToArray(resp);
       console.log(this.items);
     });
@@ -42,7 +42,7 @@ export class HomePage {
           {
             text: 'Delete',
             handler: () => {
-              firebase.database().ref('Childes/' + key).remove();
+              firebase.database().ref('Childes/' +this.currentUser.uid + '/'+ key).remove();
             }
           }
         ]

@@ -19,7 +19,7 @@ export class AddChildPage {
   Saddress : {};
   ua: any = '';
   usa:any = '';
-  ref = firebase.database().ref('Childes/');
+  ref = firebase.database();
   constructor(public navCtrl: NavController, public navParams: NavParams,
               private geolocation: Geolocation, private fdb: AngularFireDatabase) {
     this.currentUser = firebase.auth().currentUser;
@@ -45,7 +45,8 @@ export class AddChildPage {
       Slat:this.Saddress[0].lat,
       Slng:this.Saddress[0].lng,
     };
-    let newItem = this.ref.push();
+
+    let newItem = this.ref.ref('Childes/'+ this.currentUser.uid).push();
     newItem.set(this.item);
     this.navCtrl.push(HomePage);
   }
