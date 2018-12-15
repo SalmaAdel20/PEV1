@@ -8,17 +8,23 @@
 <ion-content padding>
   <ion-list>
     <ion-item *ngFor="let child of items" >
-      <h2>{{child.Name}}</h2>
-      <h5>Age: {{child.Age}}, Addrss:{{child.Address}}</h5>
-      <h6>School: {{child.SName}}, SA: {{child.SAddress}}</h6>
-      <ion-buttons icon-only right>
-        <button ion-button icon-on  ly  (click)="GoToLocate()">
-          <ion-icon name="pin"></ion-icon>
-        </button>
-        <button ion-button icon-only color="danger" (click)="DeleteChild(child.key)">
-          <ion-icon name="trash"></ion-icon>
-        </button>
-      </ion-buttons>
+      <ion-row>
+        <ion-col col-6>
+          <h2>{{child.Name}}</h2>
+          <h4>Age: {{child.Age}}</h4>
+          <h4>School: {{child.SName}}</h4>
+        </ion-col>
+        <ion-col col-6>
+          <ion-buttons icon-only right>
+            <button ion-button icon-only  (click)="GoToLocate()">
+              <ion-icon name="pin"></ion-icon>
+            </button>
+            <button ion-button icon-only color="danger" (click)="DeleteChild(child.key)">
+              <ion-icon name="trash"></ion-icon>
+            </button>
+          </ion-buttons>
+        </ion-col>
+      </ion-row>
     </ion-item>
   </ion-list>
 </ion-content>

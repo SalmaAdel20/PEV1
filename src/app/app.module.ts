@@ -10,6 +10,7 @@ import {RegisterPage} from '../pages/register/register';
 import { AddChildPage} from "../pages/add-child/add-child";
 import { NotesPage} from "../pages/notes/notes";
 
+
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AngularFireModule } from "angularfire2";
@@ -18,6 +19,11 @@ import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { GoogleMaps } from '@ionic-native/google-maps';
+import { AddressPage } from '../pages/address/address';
+
+import { Geolocation } from '@ionic-native/geolocation';
+
 
 @NgModule({
   declarations: [
@@ -28,6 +34,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
     RegisterPage,
     AddChildPage,
     NotesPage,
+    AddressPage,
   ],
   imports: [
     BrowserModule,
@@ -48,10 +55,13 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
     RegisterPage,
     AddChildPage,
     NotesPage,
+    AddressPage,
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    GoogleMaps,
+    Geolocation,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

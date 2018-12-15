@@ -1,0 +1,26 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Map Location</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div id="map_canvas"> </div>
+  <ion-row>
+    <ion-col col-6>
+      <button ion-button color="secondary" block (click)="SetLocation()">
+        <ion-icon name="ios-locate-outline"></ion-icon>
+        Set
+      </button>
+    </ion-col>
+    <ion-col col-6>
+      <button ion-button color="secondary" block (click)="Cancel()">
+        <ion-icon name="ios-exit-outline"></ion-icon>
+        Close 
+      </button>
+    </ion-col>
+  </ion-row>
+</ion-content>

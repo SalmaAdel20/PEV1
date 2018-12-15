@@ -1,0 +1,18 @@
+{
+  /* Visit https://firebase.google.com/docs/database/security to learn more about security rules. */
+  "rules": { 
+    
+    "currentLocation": {
+    ".read": true,
+    ".write": true
+    },
+    "Notes": {
+    ".read": true,
+    ".write": true
+    },
+    "Childes": {
+    ".read": true,
+    ".write": true
+    },
+    },
+  } 

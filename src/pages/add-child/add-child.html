@@ -19,6 +19,13 @@
     <ion-label floating>Address </ion-label>
     <ion-input type="text" [(ngModel)]="Address"></ion-input>
   </ion-item>
+  <ion-row>
+      <ion-col col-12>
+        <button ion-button color="secondary" block (click)="MYLocation()">
+          <ion-icon name="ios-locate-outline"></ion-icon> My Location
+        </button>
+      </ion-col>
+  </ion-row>
   <ion-item>
     <ion-label floating>School Name</ion-label>
     <ion-input type="text" [(ngModel)]="SchoolName"></ion-input>
@@ -27,6 +34,14 @@
     <ion-label floating>School Address</ion-label>
     <ion-input type="text" [(ngModel)]="SchoolAddress"></ion-input>
   </ion-item>
+  <ion-row>
+      <ion-col col-12>
+        <button ion-button color="secondary" block (click)="GoToMap()">
+          <ion-icon name="ios-map-outline"></ion-icon> Set on Map
+        </button>
+      </ion-col>
+  </ion-row>
+
   <br>
   <button ion-button block (click)="AddChild(ChildName,ChildAge,Address,SchoolName,SchoolAddress)"> Add Children </button>
 

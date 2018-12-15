@@ -5,7 +5,6 @@ import { HomePage } from '../home/home';
 import { NotesPage} from "../notes/notes";
 import { AddChildPage } from "../add-child/add-child";
 import { AngularFireAuth } from '@angular/fire/auth';
-import { NavPush } from 'ionic-angular';
 
 @Component({
   templateUrl: 'tabs.html'

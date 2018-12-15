@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {NavController, NavParams} from 'ionic-angular';
+import {AlertController, NavController, NavParams} from 'ionic-angular';
 import * as firebase from 'firebase';
 import { AngularFireDatabase } from "angularfire2/database";
 import {snapshotToArray} from "../../environments/environment";
@@ -14,7 +14,7 @@ export class HomePage {
   items = [];
   ref = firebase.database().ref('Childes/');
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private fdb: AngularFireDatabase) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, private fdb: AngularFireDatabase) {
     this.currentUser = firebase.auth().currentUser;
     console.log(this.currentUser.uid);
     this.ref.on('value', resp => {
@@ -30,6 +30,24 @@ export class HomePage {
     this.navCtrl.push("");
   }
   DeleteChild(key) {
-    firebase.database().ref('Childes/' + key).remove();
+      const confirm = this.alertCtrl.create({
+        title: 'Delete Child',
+        message: 'Are You Sure?!',
+        buttons: [
+          {
+            text: 'Cancel',
+            handler: () => {
+            }
+          },
+          {
+            text: 'Delete',
+            handler: () => {
+              firebase.database().ref('Childes/' + key).remove();
+            }
+          }
+        ]
+      });
+      confirm.present();
+
   }
 }
