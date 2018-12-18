@@ -1,25 +1,49 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, AlertController } from 'ionic-angular';
+import * as firebase from 'firebase';
+import { snapshotToArray } from '../../environments/environment';
 
-/**
- * Generated class for the NotesPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
-@IonicPage()
 @Component({
   selector: 'page-notes',
   templateUrl: 'notes.html',
 })
 export class NotesPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  currentUser: any;
+  items = [];
+  ref = firebase.database();
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
+    this.currentUser = firebase.auth().currentUser;
+    console.log(this.currentUser.uid);
+    this.ref.ref('Notes/').on('value', resp => {
+      this.items = snapshotToArray(resp);
+      console.log(this.items);
+    });
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad NotesPage');
   }
+
+  DeleteNote(key) {
+    const confirm = this.alertCtrl.create({
+      title: 'Delete Note',
+      message: 'Are You Sure?!',
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: () => {
+          }
+        },
+        {
+          text: 'Delete',
+          handler: () => {
+            firebase.database().ref('Notes/'+ key).remove();
+          }
+        }
+      ]
+    });
+    confirm.present();
+
+}
 
 }

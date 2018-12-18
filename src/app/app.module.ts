@@ -23,7 +23,8 @@ import { GoogleMaps } from '@ionic-native/google-maps';
 import { AddressPage } from '../pages/address/address';
 
 import { Geolocation } from '@ionic-native/geolocation';
-
+import { ChildLocationPage } from '../pages/child-location/child-location';
+import { LocalNotifications } from '@ionic-native/local-notifications';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { Geolocation } from '@ionic-native/geolocation';
     AddChildPage,
     NotesPage,
     AddressPage,
+    ChildLocationPage
   ],
   imports: [
     BrowserModule,
@@ -56,11 +58,13 @@ import { Geolocation } from '@ionic-native/geolocation';
     AddChildPage,
     NotesPage,
     AddressPage,
+    ChildLocationPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     GoogleMaps,
+    LocalNotifications,
     Geolocation,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
